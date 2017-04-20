@@ -1,0 +1,74 @@
+import java .io.*;
+class Employee
+{
+    int empId=101;
+    String empName="Manvith";
+    int total_leaves=120;
+    double total_sal;
+    void calculate_balance_leaves()
+    {
+        System.out.println("ONE");
+    }
+    void calculate_salary()
+    {
+        System.out.println("TWO");
+    }
+}
+
+class PermanetEmp extends Employee
+{
+    int paid_leave=10, sick_leave=15, casual_leave=20;
+    double basic=25000, hra,pfa;
+    void print_leave_details()
+    {
+		 System.out.println("empId "+empId);
+		System.out.println("empName "+empName);
+		System.out.println("paid_leave=10");
+		 System.out.println("sick_leave=15");
+         System.out.println("casual_leave=20");
+    }
+    void calculate_balance_leaves()
+    {
+      total_leaves=paid_leave + sick_leave + casual_leave;
+     System.out.println("total_leaves="+ total_leaves);
+    }
+    void calculate_salary()
+    {
+        pfa=(12*basic)/100;
+        hra=(50*basic)/100;
+        total_sal=basic+hra-pfa; 
+        System.out.println("total_sal =" +total_sal);
+    }
+}
+    class TemporaryEmp extends Employee
+{
+    int paid_leave=8, sick_leave=5, casual_leave=9;
+    double basic=15000,hra,pfa;
+    
+    void calculate_balance_leaves()
+    {
+      total_leaves=paid_leave + sick_leave + casual_leave;
+	
+     System.out.println("total_leaves="+ total_leaves);
+    }
+    void calculate_salary()
+    {
+        pfa=(12*basic)/100;
+           hra = (50*basic)/100;
+           total_sal = basic + hra - pfa; 
+		System.out.println("total_sal ="+total_sal);
+    }
+}
+class empinfo
+{
+    public static void main(String args[])throws IOException
+    {
+        PermanetEmp PE= new PermanetEmp();
+        TemporaryEmp TE= new TemporaryEmp();
+        PE.print_leave_details();
+        PE.calculate_balance_leaves();
+        PE.calculate_salary();
+        TE.calculate_balance_leaves();
+        TE.calculate_salary();
+     }
+}
